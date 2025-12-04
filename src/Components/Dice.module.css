@@ -1,0 +1,12 @@
+.die-figure {
+	position: relative;
+	width: 48px;
+	height: 48px;
+	border-radius: 12px;
+	display: grid;
+	place-items: center;
+	color: #0b1220;
+	font-weight: 800;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+	perspective: 600px;
+}
