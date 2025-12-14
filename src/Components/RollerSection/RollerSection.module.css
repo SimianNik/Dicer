@@ -1,0 +1,25 @@
+.showcase_section {
+	background: linear-gradient(135deg, rgba(43, 63, 94, 0.32), rgba(26, 37, 59, 0.7));
+	border: 1px solid rgba(226, 232, 240, 0.08);
+	border-radius: 18px;
+	padding: 16px 18px;
+	box-shadow: 0 16px 55px rgba(0, 0, 0, 0.35);
+	backdrop-filter: blur(8px);
+	padding: 5px 18px;
+	/* margin-bottom: 28px; */
+	margin-bottom: 10pt;
+}
+
+.title {
+	max-width: 720px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	color: #d0d8e5;
+}
+
+/* .content {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+} */

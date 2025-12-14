@@ -1,0 +1,21 @@
+.anim_02e {
+	transition: transform 0.2s ease;
+}
+
+.hover_up:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes bounceDown {
+  0% {
+    transform: translateY(-2px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-2px);
+  }
+}

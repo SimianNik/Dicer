@@ -1,0 +1,13 @@
+.tray {
+  margin-top: 10px;
+  /* margin-bottom: 10px; */
+  min-height: 120px;
+  background: #0b1220bf;
+  outline: 1px solid rgba(103, 232, 249, 0.6);
+  border-radius: 9px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 4px;
+}

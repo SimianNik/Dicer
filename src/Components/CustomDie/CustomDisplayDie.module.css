@@ -1,0 +1,8 @@
+.wrapper {
+  display: grid;
+  justify-items: center;
+}
+
+.custom_die_sub {
+  position: relative;
+}

@@ -1,0 +1,315 @@
+/* ————————————————
+   WRAPPER + SHADOW SYSTEM
+——————————————— */
+
+.wrapper {
+  display: grid;
+  justify-items: center;
+}
+
+/* ————————————————
+   BASE DIE STYLE
+——————————————— */
+
+.die-figure {
+  position: relative;
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 800;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+
+  color: var(--die-text, #20293d);
+  background: var(--die-bg, linear-gradient(135deg, #22d3ee, #67e8f9));
+
+  transition: transform 0.2s ease;
+  padding-top: 2%;
+}
+
+.die-figure.small {
+  width: 36px;
+  height: 36px;
+  font-size: small;
+}
+
+
+.deleteButton {
+  position: absolute;
+  top: -7px;
+  left: 35px;
+  cursor: default;
+}
+
+.caption {
+  position: relative;
+  z-index: 1;
+  color: inherit;
+  cursor: default;
+  user-select: none;
+}
+
+/* ————————————————
+   Hover / mockup  Clic animations
+——————————————— */
+.die-figure.click-grow {
+  animation: GrowClick 0.2s ease 0s 1 normal forwards;
+}
+
+@keyframes GrowClick {
+  0% {
+    transform: translateY(-2px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-2px);
+  }
+}
+
+
+/* ————————————————
+   ROLL SPIN ANIMATION
+——————————————— */
+
+/* ✨ SPIN ANIMATIONS — LEFT & RIGHT */
+.spinR {
+  animation: spinR 0.8s linear 0s 1 normal both;
+}
+
+.spinL {
+  animation: spinL 0.8s linear 0s 1 normal both;
+}
+
+
+@keyframes spinR {
+  0% {
+    transform: rotateZ(0deg) scale(1);
+  }
+
+  25% {
+    transform: rotateZ(90deg) scale(1.15);
+  }
+
+  50% {
+    transform: rotateZ(180deg) scale(1.20) rotateX(45deg);
+  }
+
+  75% {
+    transform: rotateZ(270deg) scale(1.10);
+  }
+
+  100% {
+    transform: rotateZ(360deg) rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes spinL {
+  0% {
+    transform: rotateZ(0deg) scale(1);
+  }
+
+  25% {
+    transform: rotateZ(-90deg) scale(1.15);
+  }
+
+  50% {
+    transform: rotateZ(-180deg) scale(1.20) rotateX(45deg);
+  }
+
+  75% {
+    transform: rotateZ(-270deg) scale(1.10);
+  }
+
+  100% {
+    transform: rotateZ(-360deg) scale(1);
+  }
+}
+
+/* ✨ Move (translate) animatio — LEFT & RIGHT (Applied to the wrapper)*/
+.bounce_right {
+  animation: bounce_right 0.8s ease-out 0s 1 normal both;
+}
+
+.bounce_left {
+  animation: bounce_left 0.8s ease-out 0s 1 normal both;
+}
+
+@keyframes bounce_left {
+  0% {
+    transform: translateY(0px) translateX(0px)
+  }
+
+  25% {
+    transform: translateX(-10px) translateY(20px);
+  }
+
+  50% {
+    transform: translateX(-20px) translateY(-20px);
+  }
+
+  70% {
+    transform: translateX(+5px) translateY(-20px);
+  }
+
+}
+
+@keyframes bounce_right {
+  0% {
+    transform: translateY(0px) translateX(0px)
+  }
+
+  25% {
+    transform: translateX(10px) translateY(20px);
+  }
+
+  50% {
+    transform: translateX(20px) translateY(20px);
+  }
+
+  70% {
+    transform: translateX(+5px) translateY(20px);
+  }
+
+}
+
+
+/* —————————————————————————————
+   DIE SHAPES + COLOR THEMES
+   (D2 → D20)
+————————————————————————————— */
+
+/*** d2 — elongated hexagon (cyan) ***/
+.wrapper.d2 {
+  filter:
+    drop-shadow(0 10px 20px rgba(34, 211, 238, 0.28)) drop-shadow(0 4px 10px rgba(34, 211, 238, 0.18)) drop-shadow(0 1px 2px rgba(34, 211, 238, 0.10));
+}
+
+.die-figure.d2 {
+  padding-top: 0px;
+  --die-bg: linear-gradient(135deg, #22d3ee, #67e8f9);
+  clip-path: polygon(20% 30%, 80% 30%,
+      100% 50%,
+      80% 70%, 20% 70%,
+      0% 50%);
+}
+
+/*** d4 — tetra outline ***/
+.wrapper.d4 {
+  filter:
+    drop-shadow(0 10px 20px rgba(238, 34, 34, 0.28)) drop-shadow(0 4px 10px rgba(238, 34, 34, 0.18)) drop-shadow(0 1px 2px rgba(238, 34, 34, 0.10));
+}
+
+.die-figure.d4 {
+  --die-bg: linear-gradient(135deg, rgb(238, 34, 34), #e14f4f);
+  clip-path: polygon(50% 5%,
+      95% 85%,
+      50% 100%,
+      5% 85%);
+  padding-top: 20%;
+}
+
+.wrapper.d5 {
+  filter:
+    drop-shadow(0 10px 20px rgba(34, 82, 238, 0.28)) drop-shadow(0 4px 10px rgba(34, 82, 238, 0.18)) drop-shadow(0 1px 2px rgba(34, 82, 238, 0.10));
+}
+
+/*** d5 — symmetrical pentagon ***/
+.die-figure.d5 {
+  --die-bg: linear-gradient(135deg, rgb(34, 82, 238), #6789f9);
+  clip-path: polygon(50% 5%,
+      95% 40%,
+      77% 95%,
+      23% 95%,
+      5% 40%);
+}
+
+/*** d6 — square (green) ***/
+.wrapper.d6 {
+  filter:
+    drop-shadow(0 10px 20px rgba(74, 222, 128, 0.28)) drop-shadow(0 4px 10px rgba(74, 222, 128, 0.18)) drop-shadow(0 1px 2px rgba(74, 222, 128, 0.10));
+}
+
+.die-figure.d6 {
+  --die-bg: linear-gradient(135deg, rgb(74, 222, 128), #86efac);
+  border-radius: 10px;
+}
+
+/*** d8 — diamond-octa silhouette (yellow) ***/
+.wrapper.d8 {
+  filter:
+    drop-shadow(0 10px 20px rgba(250, 204, 21, 0.28)) drop-shadow(0 4px 10px rgba(250, 204, 21, 0.18)) drop-shadow(0 1px 2px rgba(250, 204, 21, 0.10));
+}
+
+.die-figure.d8 {
+  --die-bg: linear-gradient(135deg, rgb(250, 204, 21), #fde047);
+  clip-path: polygon(50% 0,
+      100% 30%,
+      100% 70%,
+      50% 100%,
+      0 70%,
+      0 30%);
+}
+
+/*** d10 — deltohedron outline (orange) ***/
+.wrapper.d10 {
+  filter:
+    drop-shadow(0 10px 20px rgba(251, 146, 60, 0.28)) drop-shadow(0 4px 10px rgba(251, 146, 60, 0.18)) drop-shadow(0 1px 2px rgba(251, 146, 60, 0.10));
+}
+
+.die-figure.d10 {
+  --die-bg: linear-gradient(135deg, rgb(251, 146, 60), #fdba74);
+  clip-path: polygon(50% 10%,
+      100% 40%,
+      100% 60%,
+      50% 90%,
+      0 60%,
+      0 40%);
+}
+
+/*** d12 — dodeca silhouette (violet) ***/
+.wrapper.d12 {
+  filter:
+    drop-shadow(0 10px 20px rgba(167, 139, 250, 0.28)) drop-shadow(0 4px 10px rgba(167, 139, 250, 0.18)) drop-shadow(0 1px 2px rgba(167, 139, 250, 0.10));
+}
+
+.die-figure.d12 {
+  --die-bg: linear-gradient(135deg, rgb(167, 139, 250), #c4b5fd);
+  clip-path: polygon(35% 5%, 65% 5%,
+      95% 35%, 95% 65%,
+      65% 95%, 35% 95%,
+      5% 65%, 5% 35%);
+}
+
+/*** d20 — centered icosa silhouette (pink) ***/
+.wrapper.d20 {
+  filter:
+    drop-shadow(0 10px 20px rgba(244, 114, 182, 0.28)) drop-shadow(0 4px 10px rgba(244, 114, 182, 0.18)) drop-shadow(0 1px 2px rgba(244, 114, 182, 0.10));
+}
+
+.die-figure.d20 {
+  --die-bg: linear-gradient(135deg, rgb(244, 114, 182), #fda4af);
+  clip-path: polygon(50% 2%,
+      82% 12%, 98% 40%, 98% 60%, 82% 88%,
+      50% 98%,
+      18% 88%, 2% 60%, 2% 40%, 18% 12%);
+}
+
+/*** dx — centered icosa silhouette (pink) ***/
+.wrapper.dx {
+  filter:
+    drop-shadow(0 10px 20px rgba(170, 168, 169, 0.28)) drop-shadow(0 4px 10px rgba(170, 168, 169, 0.18)) drop-shadow(0 1px 2px rgba(170, 168, 169, 0.10));
+}
+
+.die-figure.dx {
+  --die-bg: linear-gradient(135deg, rgb(170, 168, 169), #c7c7c7);
+  clip-path: polygon(50% 2%,
+      82% 12%, 98% 40%, 98% 60%, 82% 88%,
+      50% 98%,
+      18% 88%, 2% 60%, 2% 40%, 18% 12%);
+}
