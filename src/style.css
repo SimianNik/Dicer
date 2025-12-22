@@ -1,3 +1,15 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 :root {
   font-family: 'Segoe UI', 'Trebuchet MS', 'Helvetica Neue', sans-serif;
   color: #e2e8f0;
@@ -33,7 +45,7 @@ body {
 }
 
 .app-shell {
-  max-width: 1100px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 40px 18px 64px;
 }
@@ -55,4 +67,26 @@ body {
   margin: 6px 0 12px;
   font-size: 30px;
   letter-spacing: -0.02em;
+}
+
+.addPool {
+  display: flex;
+  margin-bottom: 4px;
+  margin-top: 0px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.addPoolIcon {
+  margin-left: 4px;
+  margin-top: 4px;
+  color: #86efac;
+}
+
+.trayHolder {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  align-items: start;
 }

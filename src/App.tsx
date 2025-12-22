@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 import animStyles from "./Components/Common/Anims.module.css"
 
 export default function App() {
-	const { pools, createPool, removePool } = usePools();
+	const { pools, createPool } = usePools();
 	const init = useRef(false);
 
 	useEffect(() => {
@@ -16,21 +16,27 @@ export default function App() {
 		}
 	}, []);
 
+	const addPool = () => {
+		createPool("Dice Tray")
+	}
+
 	return (
 		<div className="app-shell">
 			<header className="hero">
 				<p className="eyebrow">Dice Roller</p>
 				<h1 className="appSubtitle">Craft your roll</h1>
 			</header>
-			{pools.map(p => {
-				return (
-					<RollerSection key={p.id} title={p.name}>
-						<Table key={p.id} pool={p}/>
-					</RollerSection>
-				);
-			})}
+			<div className="trayHolder">
+				{pools.map(p => {
+					return (
+						<RollerSection key={p.id} title={p.name}>
+							<Table key={p.id} pool={p} />
+						</RollerSection>
+					);
+				})}
+			</div>
 			<RollerSection>
-				<h5 className={`cursor_default ${animStyles.anim_02e} ${animStyles.hover_up}`} style={{marginBottom:"4px", marginTop:"0px", textAlign:"center"}}>Add Pool <Icon icon="rivet-icons:plus-circle-solid" width="16" height="16" /></h5>
+				<h5 onClick={addPool} className={`cursor_default ${animStyles.anim_02e} ${animStyles.hover_up} addPool`}>Add Dice Tray <span className="addPoolIcon"><Icon icon="rivet-icons:plus-circle-solid" height="14" /></span></h5>
 			</RollerSection>
 
 		</div>
