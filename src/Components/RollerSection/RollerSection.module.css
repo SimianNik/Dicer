@@ -17,6 +17,11 @@
 	color: #d0d8e5;
 }
 
+.titleHolder {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* .content {
 	display: flex;
 	align-items: center;

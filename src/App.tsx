@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 import animStyles from "./Components/Common/Anims.module.css"
 
 export default function App() {
-	const { pools, createPool } = usePools();
+	const { pools, createPool, removePool } = usePools();
 	const init = useRef(false);
 
 	useEffect(() => {
@@ -20,6 +20,10 @@ export default function App() {
 		createPool("Dice Tray")
 	}
 
+	const deletePool = (id: string) => {
+		removePool(id)
+	}
+
 	return (
 		<div className="app-shell">
 			<header className="hero">
@@ -29,7 +33,7 @@ export default function App() {
 			<div className="trayHolder">
 				{pools.map(p => {
 					return (
-						<RollerSection key={p.id} title={p.name}>
+						<RollerSection key={p.id} title={p.name} canBeClosed={true} closeClicked={() => deletePool(p.id)} >
 							<Table key={p.id} pool={p} />
 						</RollerSection>
 					);
