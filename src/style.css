@@ -84,9 +84,101 @@ body {
   color: #86efac;
 }
 
+.mt_20p{
+  margin-top: 20pt;
+}
+
 .trayHolder {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   align-items: start;
+}
+
+.m4_px {
+  margin: 4px;
+}
+
+/* =========================
+   Scrollbar styling
+   (Roll History only)
+========================= */
+
+/* Firefox */
+.historyContainer {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(103, 232, 249, 0.55) rgba(255, 255, 255, 0.06);
+}
+
+/* Chromium / WebKit (Chrome, Edge, Safari) */
+.historyContainer::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.historyContainer::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+}
+
+.historyContainer::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(103, 232, 249, 0.85), rgba(34, 211, 238, 0.55));
+  border-radius: 999px;
+
+  /* creates a “gap” so it doesn't feel chunky */
+  border: 2px solid rgba(11, 18, 32, 0.75);
+  background-clip: padding-box;
+}
+
+.historyContainer::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.95), rgba(34, 211, 238, 0.75));
+}
+
+.historyContainer::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* =========================
+   History
+========================= */
+.historyHeader {
+  cursor: pointer;
+  gap: 6px;
+}
+
+.historyToggleIcon {
+  display: inline-flex;
+  transition: transform 0.25s ease;
+}
+
+.historyHeader.open .historyToggleIcon {
+  transform: rotate(180deg);
+}
+
+.historyContainer {
+  list-style: none;
+  margin: 8px 0 0;
+  overflow: auto;
+  padding: 0;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.historyContainer.is-open {
+  max-height: 640px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.historyContainer.is-closed {
+  pointer-events: none;
+}
+
+.historyContainer li {
+  margin: 0 0 8px;
+  padding: 8px 6px;
+  /* background: rgba(255, 255, 255, 0.02); */
+  border-radius: 6px;
 }

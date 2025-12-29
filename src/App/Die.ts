@@ -27,7 +27,7 @@ export class Die extends EventEmitter {
             this.isRolling = false;
 
             this.emit("rollEnd", this);
-            AppEvents.emit("diceRolled")
+            AppEvents.emit("dieRolled")
         }, this.rollAnimDuration);
     }
 }

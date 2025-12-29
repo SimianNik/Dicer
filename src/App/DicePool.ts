@@ -1,5 +1,6 @@
 import { EventEmitter } from "./EventEmitter";
 import { Die } from "./Die";
+import { RollHistory } from "./RollHistory";
 
 export class DicePool extends EventEmitter {
     id: string;
@@ -16,7 +17,12 @@ export class DicePool extends EventEmitter {
         const die = new Die(sides);
 
         die.on("rollStart", () => this.emit("updated", this));
-        die.on("rollEnd", () => this.emit("updated", this));
+        die.on("rollEnd", () => {
+            this.emit("updated", this)
+            if (this.dice.every(d => !d.isRolling)) {
+                this.addHistoryRecord();
+            }
+        });
 
         this.dice.push(die);
         this.emit("updated", this);
@@ -36,6 +42,14 @@ export class DicePool extends EventEmitter {
 
     rollAll() {
         this.dice.forEach(d => d.roll());
+    }
+
+    addHistoryRecord() {
+        if (this.dice.length > 0) {
+            RollHistory.record(this.name,this.total,this.dice.map(d=>{
+                return {id:d.id,roll:d.lastRoll,sides:d.sides}
+            }))
+        }
     }
 
     getTotal() {
