@@ -18,38 +18,7 @@ input {
 }
 
 .btn {
-	color: #0b1220;
-	padding: 4px 10px 4px 10px;
-	border-radius: 10px;
-	font-size: 14px;
-	font-weight: 800;
-	cursor: pointer;
-	border: none;
-	cursor: default;
-	transition: transform 120ms ease, box-shadow 120ms ease;
-	max-width: 200px;
 	margin-left: 20px;
-}
-
-.create_btn {
-	box-shadow: 0 12px 30px rgba(34, 211, 238, 0.35);
-	background: linear-gradient(135deg, #67e8f9, #22d3ee);
-}
-
-.cancel_btn {
-	box-shadow: 0 12px 30px rgba(238, 34, 34, 0.35);
-	background: linear-gradient(135deg, #f96767, #ee2222);
-}
-
-
-.create_btn:hover {
-	transform: translateY(-1px);
-	box-shadow: 0 14px 34px rgba(34, 211, 238, 0.45);
-}
-
-.cancel_btn:hover {
-	transform: translateY(-1px);
-	box-shadow: 0 14px 34px rgba(238, 34, 34, 0.45);
 }
 
 .custom_sides_holder {
@@ -67,7 +36,4 @@ input {
 	transform: translateY(0px);
 	margin-top: 8pt;
 	height: auto;
-}
-.btn:active {
-	transform: translateY(0);
 }

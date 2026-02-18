@@ -3,15 +3,15 @@ import { RollHistory } from "../../App/RollHistory";
 import { AppEvents } from "../../App/AppEvents";
 
 export function useRollHistory() {
-	const [history, setHistory] = useState(RollHistory.formatRecords());
+	const [history, setHistory] = useState(() => RollHistory.formatRecords());
 
 	useEffect(() => {
-		const onHistoryAdded = () => {
-			setHistory(RollHistory.formatRecords)
+		const onHistoryModed = () => {
+			setHistory(RollHistory.formatRecords())
 		}
-		AppEvents.on("Roll-history-added", onHistoryAdded)
+		AppEvents.on("Roll-history-modded", onHistoryModed)
 
-		return () => AppEvents.off("Roll-history-added", onHistoryAdded)
+		return () => AppEvents.off("Roll-history-modded", onHistoryModed)
 	}, [])
 
 	return {

@@ -5,6 +5,8 @@ import { Table } from "./Components/DicePool/Table";
 import { Icon } from "@iconify/react";
 import animStyles from "./Components/Common/Anims.module.css"
 import { useRollHistory } from "./Components/Hooks/useRollHistory";
+import { RollHistory } from "./App/RollHistory";
+import { Button } from "./Components/UI/Button/Button";
 
 export default function App() {
 	const { pools, createPool, removePool } = usePools();
@@ -28,8 +30,6 @@ export default function App() {
 	const deletePool = (id: string) => {
 		removePool(id)
 	}
-
-	console.log(history);
 
 	return (
 		<div className="app-shell">
@@ -59,15 +59,43 @@ export default function App() {
 				>
 					Roll History <span className="addPoolIcon historyToggleIcon"><Icon icon="si:expand-more-fill" height="14" /></span>
 				</h5>
+				
 				<ul className={`historyContainer ${historyOpen ? "is-open" : "is-closed"}`}>
 					{history.length > 0 ? (
-						history.map((entry, idx) => (
-							<li key={idx}>
-								<h5 className="m4_px">{entry.date}: {entry.trayName}</h5>
-								<h6 className="m4_px">{entry.dicesSummary}. Total Roll: {entry.totalRoll}</h6>
-								<hr />
+						<>
+							<li>
+								<>
+									<style>{`
+										.historyContainer { position: relative; }
+										.historyContainer > li:first-child {
+											position: sticky;
+											top: 0;
+											z-index: 20;
+											background: linear-gradient(135deg, rgba(43, 63, 94, 0.32), rgba(26, 37, 59, 0.7));
+											padding: 8px 0;
+											display: flex;
+											justify-content: flex-end;
+										}
+									`}</style>
+								</>
+								<Button
+									type="button"
+									size="sm"
+									variant="danger"
+									onClick={() => RollHistory.clearHistory()}
+									aria-label="Clear roll history"
+								>
+									Clear History
+								</Button>
 							</li>
-						))
+							{history.map((entry, idx) => (
+								<li key={idx}>
+									<h5 className="m4_px">{entry.date}: {entry.trayName}</h5>
+									<h6 className="m4_px">{entry.dicesSummary}. Total Roll: {entry.totalRoll}</h6>
+									<hr />
+								</li>
+							))}
+						</>
 					) : (
 						<li>No rolls yet</li>
 					)}

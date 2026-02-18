@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { DisplayDie } from "../Dice/DisplayDie";
 import styles from "./DiceShowcase.module.css";
+import { Button } from "../UI/Button/Button";
 
 type Props = {
 	className?: string,
@@ -47,7 +48,7 @@ export const DiceShowcase = ({ className, onDieClick }: Props) => {
 					<input
 						ref={inputRef}
 						type="number"
-						min="2"
+						min="1"
 						value={customSides}
 						onChange={e => setCustomSides(Number(e.target.value))}
 						name="custom_input_ammount"
@@ -58,8 +59,8 @@ export const DiceShowcase = ({ className, onDieClick }: Props) => {
 							}
 						}}
 					/>
-					<button className={`${styles.btn} ${styles.create_btn}`} onClick={()=> customSides > 0 && onDieClick?.(customSides)}>Create</button>
-					<button className={`${styles.btn} ${styles.cancel_btn}`} onClick={() => setIsDnOpened(false)}>Cancel</button>
+					<Button variant="primary" size="sm" className={styles.btn} onClick={() => customSides > 0 && onDieClick?.(customSides)}>Create</Button>
+					<Button variant="danger" size="sm" className={styles.btn} onClick={() => setIsDnOpened(false)}>Cancel</Button>
 				</div>
 			}
 
