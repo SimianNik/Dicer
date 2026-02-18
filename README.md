@@ -58,7 +58,7 @@ Modern dark-ish styled interface with:
 - Expandable roll history
 
 
-##🛠 Built With
+## 🛠 Built With
 
 - React
 - TypeScript
