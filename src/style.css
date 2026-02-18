@@ -142,7 +142,6 @@ body {
    History
 ========================= */
 .historyHeader {
-  cursor: pointer;
   gap: 6px;
 }
 
@@ -181,4 +180,13 @@ body {
   padding: 8px 6px;
   /* background: rgba(255, 255, 255, 0.02); */
   border-radius: 6px;
+}
+
+.clearHistory {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
 }

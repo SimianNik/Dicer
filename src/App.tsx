@@ -63,21 +63,7 @@ export default function App() {
 				<ul className={`historyContainer ${historyOpen ? "is-open" : "is-closed"}`}>
 					{history.length > 0 ? (
 						<>
-							<li>
-								<>
-									<style>{`
-										.historyContainer { position: relative; }
-										.historyContainer > li:first-child {
-											position: sticky;
-											top: 0;
-											z-index: 20;
-											background: linear-gradient(135deg, rgba(43, 63, 94, 0.32), rgba(26, 37, 59, 0.7));
-											padding: 8px 0;
-											display: flex;
-											justify-content: flex-end;
-										}
-									`}</style>
-								</>
+							<li className="clearHistory">
 								<Button
 									type="button"
 									size="sm"

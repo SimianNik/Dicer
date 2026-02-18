@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from './Die.module.css'
-import { commonShapeMap, type CommonShape } from "../../common/types";
+import { commonShapeMap } from "../../common/types";
 import anims from '../Common/Anims.module.css'
 
 type Props = {
