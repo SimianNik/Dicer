@@ -1,4 +1,4 @@
- # 🎲 Dicer – React Dice Roller
+ # 🎲 React Dice Roller
 
 A lightweight, modular dice roller built with **React + TypeScript**, featuring a custom event-driven state architecture and cryptographically strong randomness.
 

@@ -14,6 +14,10 @@ export class DicePool extends EventEmitter {
     }
 
     addDie(sides: number) {
+        if (!Number.isInteger(sides) || sides <= 0) {
+            throw new Error("Sides must be a positive integer");
+        }
+        
         const die = new Die(sides);
 
         die.on("rollStart", () => this.emit("updated", this));

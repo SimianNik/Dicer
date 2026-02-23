@@ -27,9 +27,16 @@ export const DiceShowcase = ({ className, onDieClick }: Props) => {
 		if (isDnOpened) {
 			inputRef.current?.focus()
 		} else {
-			setCustomSides(1)
+			setCustomSides(0) // reset to default value when closed
 		}
 	}, [isDnOpened])
+
+	const handleConfirmSides = () => {
+		if (customSides > 0) {
+			onDieClick?.(customSides)
+			setIsDnOpened(false)
+		}
+	}
 
 	return (
 		<>
@@ -49,17 +56,17 @@ export const DiceShowcase = ({ className, onDieClick }: Props) => {
 						ref={inputRef}
 						type="number"
 						min="1"
-						value={customSides}
-						onChange={e => setCustomSides(Number(e.target.value))}
+						value={customSides < 1 ? "" : customSides}
+						onChange={e => setCustomSides(Number(e.target.value) >= 0 ? Number(e.target.value) : 0)}
 						name="custom_input_ammount"
 						onKeyDown={(e) => {
 							if (e.key === 'Enter') {
 								e.preventDefault()
-								if (customSides > 0) onDieClick?.(customSides)
+								handleConfirmSides()
 							}
 						}}
 					/>
-					<Button variant="primary" size="sm" className={styles.btn} onClick={() => customSides > 0 && onDieClick?.(customSides)}>Create</Button>
+					<Button variant="primary" size="sm" className={styles.btn} onClick={() => customSides > 0 && handleConfirmSides()}>Create</Button>
 					<Button variant="danger" size="sm" className={styles.btn} onClick={() => setIsDnOpened(false)}>Cancel</Button>
 				</div>
 			}
