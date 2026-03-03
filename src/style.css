@@ -91,7 +91,6 @@ body {
 .trayHolder {
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   align-items: start;
 }
 
